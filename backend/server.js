@@ -67,6 +67,14 @@ todoRoutes.route('/update/:id').post(function(req, res) {
     })
 });
 
+todoRoutes.route('/delete/:id').post(function(req, res) {
+    let id = req.params.id;
+    Todo.findById(id, function(err, todo) {
+        res.json(todo);
+    }); 
+});
+
+
 app.use('/todos', todoRoutes);
 
 app.listen(PORT, function() {
